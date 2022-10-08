@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { THEME } from '../../constants/theme.constants';
-import { Option } from '../../models/data.models';
+import { IQOption } from '../../models/data.models';
 const Div = styled.div`
   border: 1px solid #ededed;
   cursor: pointer;
@@ -76,20 +76,20 @@ const Label = styled.label`
   display:flex;
   align-items:center;
 `
-const Span=styled.span`
+const Span = styled.span`
       height: 100%;
     width: 100%;
     display: block;
 `
-function QOption(props:Option) {
+function QOption(props: IQOption) {
   return (
     <div>
-    <Div>
-    <Label >
-      <Radio type="radio" value={props.optionId} name={props.questionId} id="radio-option" />
-      <Span>{props.optionVal}</Span>
-      </Label>
-    </Div>
+      <Div>
+        <Label >
+          <Radio type="radio" value={props.optionId} name={props.questionId} id="radio-option" />
+          <Span>{props.optionVal}</Span>
+        </Label>
+      </Div>
     </div>
   );
 }
