@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 const Div = styled.div`
   margin: 40px;
@@ -8,9 +9,21 @@ const Div = styled.div`
    background-color: yellow;
  }
 `;
-function Home() {
+function Home(props: any) {
+  const [testIds, setTestIds] = useState([])
+  useEffect(() => {
+    // Update the document title using the browser API
+    console.log(testIds)
+    console.log("---",props)
+    setTestIds(props.tests.testIds)
+  }, [props]);
   return (
-    <Div >Home</Div>
+    <div>
+      {testIds && testIds.map((elm: string) => {
+        return <Link to={`/test/${elm}`}>${elm}</Link>
+      })}
+    </div>
+
   );
 }
 

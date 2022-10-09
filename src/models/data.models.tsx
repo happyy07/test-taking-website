@@ -10,8 +10,16 @@ interface IQuestion {
     options:IQOption[],
     answerOptionId:string
 }
+interface ITest{
+    id:string,
+    questions:IQuestion[]
+}
 interface IQuestionProps{
     questionData:IQuestion
 }
 
-export  type {IQOption,IQuestion,IQuestionProps};
+interface IRouteParams{
+    questionId:string,
+    testId:string
+}
+export  type {IQOption,IQuestion,IQuestionProps,IRouteParams,ITest};
