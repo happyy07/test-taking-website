@@ -40,9 +40,9 @@ function Home(props: any) {
   justify-content: space-between;
   max-width:250px;
   background-color: ${THEME.SECONDARY};
-  padding:5px;
+  padding:10px;
   border-radius: 10px;
-
+  margin:10px auto; 
   `
   const Button=styled.button`
     background-color: ${THEME.PRIMARY};
@@ -57,7 +57,7 @@ function Home(props: any) {
 
   `
   return (
-    <div>
+    <div style={    {margin: "100px"}}>
       <P>Select Any of the following tests to get started</P>
       {testIds && testIds.map((elm: any) => {
         return <Link to={`/test/${elm.id}`} style={{textDecoration:'none'}}>
