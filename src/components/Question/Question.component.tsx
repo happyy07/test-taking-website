@@ -47,7 +47,7 @@ function Question({ questionData }: IQuestionProps) {
   }, [questionData]);
   return (
     <>
-      <QuestionWrapper>
+      {question && <QuestionWrapper>
         <QuestionContentWrapper>
           <QuestionStatement>{question.questionText}</QuestionStatement>
           <QuestionDescription>{question.questionDescription}</QuestionDescription>
@@ -58,7 +58,7 @@ function Question({ questionData }: IQuestionProps) {
           {question.options.map((option) => <QOption optionId={option.optionId} optionVal={option.optionVal} questionId={question.questionId} />)}
         </OptionWrapper>
       </QuestionWrapper>
-
+      }
 
     </>
   );
