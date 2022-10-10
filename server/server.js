@@ -10,7 +10,7 @@ server.use(middlewares);
 
 server.get('/allTests', function (req, res) {
   // See https://github.com/typicode/lowdb
-  let testIds=db.tests.map(elm=>elm.id)
+  let testIds=db.tests.map(elm=>{return{id:elm.id,description:elm.description}})
   console.log(testIds)
   if (testIds) {
     res.jsonp({testIds})
