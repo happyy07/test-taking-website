@@ -3,7 +3,7 @@ import { IQuestion,ITest } from '../models/data.models'
 
 const ENDPOINT_URL="http://localhost:3200"
 function getTest(testId:string|undefined){
-    return axios.get<ITest[]>(`${ENDPOINT_URL}/tests?testId=${testId}`)
+    return axios.get<ITest[]>(`${ENDPOINT_URL}/tests?id=${testId}`)
 
 }
 function getAllTests(){
