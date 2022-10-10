@@ -8,7 +8,8 @@ interface IQuestion {
     questionText:string,
     questionDescription:string,
     options:IQOption[],
-    answerOptionId:string
+    answerOptionId:string,
+    selectedAnswer:string
 }
 interface ITest{
     id:string,
@@ -26,6 +27,7 @@ interface ITestState{
     test: ITest|null,
     testIds:string[],
     loading:boolean,
-    activeQuestion:number
+    activeQuestion:number,
+    testStarted:boolean
 }
 export  type {IQOption,IQuestion,IQuestionProps,IRouteParams,ITest,ITestState};

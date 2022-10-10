@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { THEME } from '../../constants/theme.constants';
 import { IQOption, IQuestion, IQuestionProps } from '../../models/data.models';
+import { useAppDispatch } from '../../store/hooks';
+import { setSelectedAnswer } from '../../store/test';
 import QOption from '../QOption/QOption.component';
 const Div = styled.div`
 
@@ -40,22 +42,23 @@ const QuestionDescription = styled.blockquote`
 `;
 
 function Question({ questionData }: IQuestionProps) {
-  const [question, setQuestion] = useState(questionData)
-  useEffect(() => {
-    // Update the document title using the browser API
-    setQuestion(questionData)
-  }, [questionData]);
+  const dispatch = useAppDispatch()
+  
+  const changeHandler=(e:any)=>{
+    dispatch(setSelectedAnswer(e.target.value))
+    
+  }
   return (
     <>
-      {question && <QuestionWrapper>
+      {questionData && <QuestionWrapper>
         <QuestionContentWrapper>
-          <QuestionStatement>{question.questionText}</QuestionStatement>
-          <QuestionDescription>{question.questionDescription}</QuestionDescription>
+          <QuestionStatement>{questionData.questionText}</QuestionStatement>
+          <QuestionDescription>{questionData.questionDescription}</QuestionDescription>
         </QuestionContentWrapper>
 
-        <OptionWrapper>
+        <OptionWrapper onChange={changeHandler}>
           <p>SELECT ONLY ONE</p>
-          {question.options.map((option) => <QOption optionId={option.optionId} optionVal={option.optionVal} questionId={question.questionId} />)}
+          {questionData.options.map((option,index) => <QOption  key={index} optionId={option.optionId} optionVal={option.optionVal} questionId={questionData.questionId} />)}
         </OptionWrapper>
       </QuestionWrapper>
       }

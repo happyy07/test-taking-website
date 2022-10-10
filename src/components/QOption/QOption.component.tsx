@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { THEME } from '../../constants/theme.constants';
 import { IQOption } from '../../models/data.models';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { activeQuestionSelector, testSelector } from '../../store/test';
 const Div = styled.div`
   border: 1px solid #ededed;
   cursor: pointer;
@@ -82,12 +84,16 @@ const Span = styled.span`
     display: block;
 `
 function QOption(props: IQOption) {
-  
+  const activeQuestion = useAppSelector(activeQuestionSelector)
+  const test = useAppSelector(testSelector)
   return (
     <div>
       <Div>
         <Label >
-          <Radio type="radio" value={props.optionId} name={props.questionId} id="radio-option" />
+          <Radio type="radio" 
+          value={props.optionId} 
+          name={props.questionId} 
+          checked={test.test.questions && test.test.questions[activeQuestion].selectedAnswer === props.optionId} />
           <Span>{props.optionVal}</Span>
         </Label>
       </Div>

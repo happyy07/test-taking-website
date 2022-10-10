@@ -7,7 +7,7 @@ import QOption from '../QOption/QOption.component';
 import Question from './Question.component';
 import { getTest } from '../../services/APIService';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadingSelector, testSelector, setTest, activeQuestionSelector } from '../../store/test';
+import { loadingSelector, testSelector, setTest, activeQuestionSelector, testStartedSelector, setTestStarted } from '../../store/test';
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 const Div = styled.div`
 
@@ -47,9 +47,10 @@ function QuestionPage() {
   const test = useSelector(testSelector)
   const activeQuestion = useSelector(activeQuestionSelector)
   const isLoading = useSelector(loadingSelector)
+  // const testStarted = useSelector(testStartedSelector)
 
   useEffect(() => {
-
+    dispatch(setTestStarted(true))
     getTest(testId).then((res) => {
       if (testId && !isLoading) {
         dispatch(setTest(res.data[0]))
@@ -59,7 +60,10 @@ function QuestionPage() {
 
   }, [])
   return (
-    <>{test.test && test.test.questions.filter((elm: any, index: number) => index === activeQuestion).map((elm: any) => <Question questionData={elm} />)}
+    <>{test.test 
+    && test.test.questions
+    .filter((elm: any, index: number) => index === activeQuestion)
+    .map((elm: any, index: number) => <Question key={index} questionData={elm} />)}
 
     </>
   );

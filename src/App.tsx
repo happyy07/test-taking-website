@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Home tests={tests}/>} />
         <Route path="/Finish" element={<Finish />} />
         <Route path="/Result" element={<Result />} />
-        <Route path="/test/:testId/:question" element={<QuestionPage />} />
+        <Route path="/test/:testId/" element={<QuestionPage />} />
       </Routes>
       <Footer />
     </div>
