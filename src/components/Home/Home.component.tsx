@@ -15,13 +15,6 @@ const Div = styled.div`
  }
 `;
 function Home(props: any) {
-  // const [testIds, setTestIds] = useState([])
-  // // useEffect(() => {
-  // //   // Update the document title using the browser API
-  // //   console.log(testIds)
-  // //   console.log("---",props)
-  // //   setTestIds(props.tests.testIds)
-  // // }, [props]);
   const dispatch = useAppDispatch()
   const testIds = useSelector(testIdselector)
   dispatch(setActiveQuestion(0))
@@ -44,7 +37,7 @@ function Home(props: any) {
   border-radius: 10px;
   margin:10px auto; 
   `
-  const Button=styled.button`
+  const Button = styled.button`
     background-color: ${THEME.PRIMARY};
     color:${THEME.SECONDARY};
     padding:5px 10px;
@@ -57,15 +50,19 @@ function Home(props: any) {
 
   `
   return (
-    <div style={    {margin: "100px"}}>
+    <div style={{ margin: "100px" }}>
       <P>Select Any of the following tests to get started</P>
       {testIds && testIds.map((elm: any) => {
-        return <Link to={`/test/${elm.id}`} style={{textDecoration:'none',    color: "black"}}>
-          <Div>{elm.description}
-          <Button>Start</Button></Div>
-        </Link>
+        return <Div><Link to={`/test/${elm.id}`} style={{
+          textDecoration: 'none', color: "black", justifyContent: "space-between",
+          width: "100%",
+          display: "flex"
+        }}>
+          {elm.description}
+          <Button>Start</Button>
+        </Link></Div>
       })}
-    </div>
+    </div >
 
   );
 }
