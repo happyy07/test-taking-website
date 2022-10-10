@@ -60,7 +60,7 @@ function Home(props: any) {
     <div style={    {margin: "100px"}}>
       <P>Select Any of the following tests to get started</P>
       {testIds && testIds.map((elm: any) => {
-        return <Link to={`/test/${elm.id}`} style={{textDecoration:'none',    color: "black";}}>
+        return <Link to={`/test/${elm.id}`} style={{textDecoration:'none',    color: "black"}}>
           <Div>{elm.description}
           <Button>Start</Button></Div>
         </Link>
