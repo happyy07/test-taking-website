@@ -16,10 +16,30 @@ const Div = styled.div`
   &:hover {
    background-color: #6ca798;
  }
+ ${({ className }) => className && `
+      background-color: #6ca798;
+      color:${THEME.SECONDARY};
+      input{
+        background-color: ${THEME.PRIMARY}!important;
+         border: 2px solid ${THEME.SECONDARY}!important;
+         ::after {
+            background-color: ${THEME.SECONDARY}!important;
+         }
+      }
+   }
+  `}
  &:hover {
   input:not(:checked){
     cursor: pointer;
     border: 2px solid ${THEME.SECONDARY};
+    ::after {
+      background-color: ${THEME.SECONDARY}
+    }
+   }
+   input:checked{
+    cursor: pointer;
+    border: 2px solid ${THEME.SECONDARY};
+    background-color: #6ca798;
     ::after {
       background-color: ${THEME.SECONDARY}
     }
@@ -88,7 +108,7 @@ function QOption(props: IQOption) {
   const test = useAppSelector(testSelector)
   return (
     <div>
-      <Div>
+      <Div className={`${test.test.questions[activeQuestion].selectedAnswer === props.optionId?"checked":""}`}>
         <Label >
           <Radio type="radio" 
           value={props.optionId} 
