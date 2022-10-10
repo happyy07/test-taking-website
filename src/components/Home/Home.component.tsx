@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { THEME } from '../../constants/theme.constants';
 import { getAllTests, getTest } from '../../services/APIService';
 import { useAppDispatch } from '../../store/hooks';
-import { setTestIds, setTestStarted, testIdselector, testSelector } from '../../store/test';
+import { setActiveQuestion, setTestIds, setTestStarted, testIdselector, testSelector } from '../../store/test';
 const Div = styled.div`
   margin: 40px;
   border: 5px outset pink;
@@ -24,6 +24,7 @@ function Home(props: any) {
   // // }, [props]);
   const dispatch = useAppDispatch()
   const testIds = useSelector(testIdselector)
+  dispatch(setActiveQuestion(0))
   dispatch(setTestStarted(false))
   useEffect(() => {
     getAllTests().then((res) => {

@@ -49,7 +49,7 @@ function Header() {
   return (
     <>
       <Div>
-        <P><Link to={"/"}>KMQ</Link></P>
+        <P><Link to={"/"} style={{textDecoration:'none'}}>KMQ</Link></P>
         {testStarted
           && activeQuestion < test?.test?.questions.length-1
           && <Button onClick={nextHandler}>Next <BsArrowRight size={"1.5em"} color={THEME.SECONDARY} /></Button>}
