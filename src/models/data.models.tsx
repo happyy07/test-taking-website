@@ -15,11 +15,17 @@ interface ITest{
     questions:IQuestion[]
 }
 interface IQuestionProps{
-    questionData:IQuestion
+    questionData:IQuestion|null
 }
 
 interface IRouteParams{
     questionId:string,
     testId:string
 }
-export  type {IQOption,IQuestion,IQuestionProps,IRouteParams,ITest};
+interface ITestState{
+    test: ITest|null,
+    testIds:string[],
+    loading:boolean,
+    activeQuestion:number
+}
+export  type {IQOption,IQuestion,IQuestionProps,IRouteParams,ITest,ITestState};
